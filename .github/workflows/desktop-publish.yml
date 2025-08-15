@@ -15,8 +15,6 @@ jobs:
       fail-fast: false
       matrix:
         platform: [windows-latest]
-    env:
-      working-directory: ./crates/bar-factory
 
     runs-on: ${{ matrix.platform }}
     steps:
@@ -42,7 +40,6 @@ jobs:
       - uses: oven-sh/setup-bun@v2
       - name: install app dependencies and build it
         run: bun install && bun run build
-        working-directory: ${{env.working-directory}}
       - uses: tauri-apps/tauri-action@v0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
